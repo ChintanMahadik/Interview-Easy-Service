@@ -1,20 +1,34 @@
 package com.chintan.org.app.endpoint;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.chintan.org.app.model.ModuleDetails;
+import com.chintan.org.app.row.InterviewEasyRow;
+import com.chintan.org.app.service.ApplicationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(originPatterns = {("${cors.filter.pattern}")}, maxAge = 3600)
 @RequestMapping("/api")
 public class ServiceEndpoint {
 
+    @Autowired
+    ApplicationService applicationService;
+
     @GetMapping(value = "/home", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String firstMethod(){
-        System.out.println("Inside Service");
-        return "Programming";
+    public String home(){
+        return "Welcome to Interview Easy";
+    }
+
+    @GetMapping(value = "/getModules", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<InterviewEasyRow> getModules(){
+        return applicationService.getModules();
+    }
+
+    @PostMapping(value = "/addModules", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String addModules(@RequestBody ModuleDetails moduleDetails){
+        return applicationService.addModules(moduleDetails);
     }
 }
