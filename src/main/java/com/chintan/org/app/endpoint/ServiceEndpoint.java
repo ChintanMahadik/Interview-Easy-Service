@@ -18,8 +18,8 @@ public class ServiceEndpoint {
     ApplicationService applicationService;
 
     @GetMapping(value = "/getModules", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ModuleRow> getModules(){
-        return applicationService.getModules();
+    public List<ModuleRow> getModules(@RequestParam String categoryName){
+        return applicationService.getModules(categoryName);
     }
 
     @PostMapping(value = "/addModule", produces = MediaType.TEXT_PLAIN_VALUE)

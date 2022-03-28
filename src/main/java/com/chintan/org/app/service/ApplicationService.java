@@ -22,7 +22,7 @@ public class ApplicationService {
         return moduleDao.addModule(module);
     }
 
-    public List<ModuleRow> getModules(){
-        return moduleDao.getModules();
+    public List<ModuleRow> getModules(String categoryName){
+        return moduleDao.getModules(categoryName);
     }
 }

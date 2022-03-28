@@ -1,31 +1,24 @@
 package com.chintan.org.app.row;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "MODULE")
-public class ModuleRow {
+public class ModuleRow implements Serializable {
+
     @Id
-    @GeneratedValue
-    private Integer id;
+    private String moduleName;
 
     @Column(nullable = false)
     private String categoryName;
-
-    @Column(nullable = false)
-    private String moduleName;
 
     public ModuleRow() {
 
     }
 
     public ModuleRow(ModuleRowBuilder builder) {
-        this.id = builder.id;
         this.categoryName = builder.categoryName;
         this.moduleName = builder.moduleName;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getCategoryName() {
@@ -41,14 +34,8 @@ public class ModuleRow {
     }
 
     public static class ModuleRowBuilder {
-        private Integer id;
         private String categoryName;
         private String moduleName;
-
-        public ModuleRowBuilder id(Integer id) {
-            this.id = id;
-            return this;
-        }
 
         public ModuleRowBuilder categoryName(String categoryName) {
             this.categoryName = categoryName;

@@ -33,9 +33,9 @@ public class ModuleDaoImpl implements ModuleDao {
     }
 
     @Override
-    public List<ModuleRow> getModules() {
+    public List<ModuleRow> getModules(String categoryName) {
         List<ModuleRow> list = new ArrayList<>();
-        Lists.newArrayList(moduleRepository.findAll().iterator())
+        Lists.newArrayList(moduleRepository.findModulesForCategories(categoryName).iterator())
                 .forEach(x -> list.add(x));
         return list;
     }
