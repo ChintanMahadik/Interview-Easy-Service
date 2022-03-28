@@ -1,10 +1,9 @@
 package com.chintan.org.app.service;
 
 import com.chintan.org.app.dao.ModuleDao;
-import com.chintan.org.app.model.ModuleDetails;
-import com.chintan.org.app.row.InterviewEasyRow;
+import com.chintan.org.app.model.Module;
+import com.chintan.org.app.row.ModuleRow;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,11 +18,11 @@ public class ApplicationService {
         this.moduleDao = moduleDao;
     }
 
-    public String addModules(ModuleDetails moduleDetails){
-        return moduleDao.addModules(moduleDetails);
+    public String addModule(Module module){
+        return moduleDao.addModule(module);
     }
 
-    public List<InterviewEasyRow> getModules(){
+    public List<ModuleRow> getModules(){
         return moduleDao.getModules();
     }
 }
