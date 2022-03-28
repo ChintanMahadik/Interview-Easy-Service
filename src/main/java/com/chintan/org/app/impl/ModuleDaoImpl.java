@@ -18,17 +18,17 @@ public class ModuleDaoImpl implements ModuleDao {
     private ModuleRepository moduleRepository;
 
     @Override
-    public String addModule(Module module) {
+    public ModuleRow addModule(Module module) {
         ModuleRow moduleRow = ModuleRow.aModuleRowBuilder()
                 .categoryName(module.getCategoryName().orElse(null))
                 .moduleName(module.getModuleName().orElse(null))
                 .build();
         try {
-            moduleRepository.save(moduleRow);
-            return "Success";
+
+            return moduleRepository.save(moduleRow);
         }catch(Exception e){
             System.out.println(e.getMessage());
-            return "Failure";
+            return ModuleRow.aModuleRowBuilder().build();
         }
     }
 

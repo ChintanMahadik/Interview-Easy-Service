@@ -18,7 +18,7 @@ public class ApplicationService {
         this.moduleDao = moduleDao;
     }
 
-    public String addModule(Module module){
+    public ModuleRow addModule(Module module){
         return moduleDao.addModule(module);
     }
 

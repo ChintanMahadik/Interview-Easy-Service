@@ -6,6 +6,6 @@ import com.chintan.org.app.row.ModuleRow;
 import java.util.List;
 
 public interface ModuleDao {
-    public String addModule(Module row);
+    public ModuleRow addModule(Module row);
     public List<ModuleRow> getModules(String categoryName);
 }

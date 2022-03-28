@@ -22,8 +22,8 @@ public class ServiceEndpoint {
         return applicationService.getModules(categoryName);
     }
 
-    @PostMapping(value = "/addModule", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String addModules(@RequestBody Module module){
+    @PostMapping(value = "/addModule", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ModuleRow addModules(@RequestBody Module module){
         return applicationService.addModule(module);
     }
 }
